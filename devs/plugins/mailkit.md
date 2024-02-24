@@ -5,13 +5,13 @@ tags:
   - plugins
 ---
 
-# Sienar.MailKit plugin
+# Sienar.Plugin.MailKit plugin
 
 This plugin configures your Sienar application to send email via SMTP through the [MailKit](https://github.com/jstedfast/MailKit) library for .NET.
 
 ## Configuration
 
-You need to configure the MailKit plugin with your SMTP information in order to send mail. You can do this in one of two ways: via `appsettings.json` or directly on the `IServiceCollection` like normal. If you apply your own configuration, Sienar will detect an existing configuration and skip adding its own. All configuration is stored on the [SmtpOptions class](https://github.com/christianlevesque/sienar/blob/main/src/Sienar.MailKit/SmtpOptions.cs).
+You need to configure the MailKit plugin with your SMTP information in order to send mail. You can do this in one of two ways: via `appsettings.json` or directly on the `IServiceCollection` like normal. If you apply your own configuration, Sienar will detect an existing configuration and skip adding its own. All configuration is stored on the [SmtpOptions class](https://github.com/sienar-cms/plugin-mailkit/blob/main/SmtpOptions.cs).
 
 ### `appsettings.json` configuration
 
@@ -60,7 +60,7 @@ builder.Builder.Services.Configure<SmtpOptions>(o =>
 
 // Don't forget to run the app
 await builder
-    .AddPlugin(new MailKitPlugin())
+    .AddStartupPlugin<MailKitPlugin>()
     .Build()
     .RunAsync();
 ```
